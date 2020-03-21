@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </header>
+    <body>
+        <div id='help' class="main-content">
+            {{>header}}
+            <p>This is a help page for {{product}}</p>
+        </div>
+        {{>footer}}
+        <script>
+            new Vue({
+                    el: "#help",
+                    data: {
+                        title:'Weather Forecast'
+                    }
+                })
+        </script> 
+    </body>
+</html>
