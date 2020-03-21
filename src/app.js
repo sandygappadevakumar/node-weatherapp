@@ -11,6 +11,8 @@ const publicPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
+const port = process.env.PORT || 3000
+
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
@@ -20,22 +22,22 @@ app.use(express.static(publicPath))
 app.get('', (req, res) =>{
     res.render('index', {
         //title:'Weather  Forecast',
-        name:'Deva Kumar S'
+        name:'Sandyagappa'
     })
 })
 
 app.get('/help', (req, res) =>{
     res.render('help', {
-        title:'Weather  Forecast',
+        title:'Weather  Forecast - Help',
         product:'Weather Web Server',
-        name:'Deva Kumar S'
+        name:'Sandyagappa'
     })
 })
 
 app.get('/about', (req, res) =>{
     res.render('about', {
-        title:'Weather  Forecast',
-        name:'Deva Kumar S'
+        title:'Weather  Forecast - AboutMe',
+        name:'Sandyagappa'
     })
 })
 
@@ -55,7 +57,7 @@ app.get('/weather', (req, res) =>{
                 {
                     const data = summary + ' It is currently ' + temperature + ' degress out. There is a ' + precipProbability + '% chance of rain.'
                     res.send({forecast: data})
-                    console.log('It is currently '+ temperatureHigh +' degree out. There is '+ precipProbability +'% chance of rain.')
+                    console.log(data)
                 }                    
                 else
                 {
@@ -77,7 +79,7 @@ app.get('/weather', (req, res) =>{
 app.get('/help/*', (req, res)=>{
     res.render('404', {
         title:'404 Error Response',
-        name: 'Deva Kumar S',
+        name: 'Sandyagappa',
         errorMsg:'Help article not found'
     })
 })
@@ -85,11 +87,11 @@ app.get('/help/*', (req, res)=>{
 app.get('*', (req, res) =>{
     res.render('404',{
         title:'404 Error Response',
-        name:'Deva Kumar S',
+        name:'Sandyagappa',
         errorMsg:'Page Not Found'
     })
 })
 
-app.listen(3000, ()=>{
-    console.log('Server is running @ 3000')
+app.listen(port, ()=>{
+    console.log('Server is running @ '+port)
 })

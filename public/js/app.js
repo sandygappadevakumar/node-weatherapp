@@ -13,7 +13,7 @@ var myForecast = function(address)
 }
 var forecast = function(address, cb)
 {
-    fetch('http://localhost:3000/weather?address='+address).then((res)=>{
+    fetch('/weather?address='+address).then((res)=>{
         if(!res.body)
             console.log(res)
         else
